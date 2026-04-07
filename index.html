@@ -1,417 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="prism.css">
-    <script src="prism.js"></script>
-    <title>Code Cheatsheet</title>
+    <title>Codesheet Library | Central Code Hub</title>
+    <!-- Tailwind CSS (CDN for rapid prototyping) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              accent: '#38bdf8', // Neon blue
+              'accent-blue': '#38bdf8', // Neon blue
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="global.css">
 </head>
+<body class="antialiased">
 
-<body>
-    <nav>
-        <div class="nav">
-            <div class="nav-content">
-                <h1 class="logo">Cheatsheet</h1>
-                <ul>
-                    <a href="https://atsuchak.github.io/MyCodeSheet/"></a>
-                    <li>Home</li>
-                    <a target="_blank" href="https://atsuchak.github.io/">
-                        <li>Portfolio</li>
-                    </a>
-                    <a target="_blank" href="https://atsuchak.github.io/#contact">
-                        <li>Contact</li>
-                    </a>
-                </ul>
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-black/50 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="text-xl font-bold tracking-wider flex items-center gap-2">
+                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                CODESHEET
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium items-center">
+                <a href="index.html" class="text-white">Home</a>
+                
+                <!-- Dropdown Menu -->
+                <div class="relative group py-4">
+                    <button class="text-slate-400 hover:text-white transition-colors flex items-center gap-1">
+                        Explore Modules
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="absolute top-[80%] left-1/2 -translate-x-1/2 min-w-[200px] w-max bg-[#0a0a0a] border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 p-2">
+                        <div class="grid grid-rows-5 grid-flow-col gap-x-2 gap-y-1">
+                            <a href="github.html" class="block px-4 py-2 text-sm text-slate-300 hover:text-[#38bdf8] hover:bg-white/5 rounded-lg transition-colors whitespace-nowrap">Git & GitHub</a>
+                            <a href="c.html" class="block px-4 py-2 text-sm text-slate-300 hover:text-[#38bdf8] hover:bg-white/5 rounded-lg transition-colors whitespace-nowrap">C / C++</a>
+                            <a href="java.html" class="block px-4 py-2 text-sm text-slate-300 hover:text-[#38bdf8] hover:bg-white/5 rounded-lg transition-colors whitespace-nowrap">Java</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="github.html" class="bg-white/10 hover:bg-white/20 text-white px-4 py-1.5 rounded-full transition-colors border border-white/10">Get Started</a>
             </div>
-            <button id="theme-toggle" aria-label="Toggle Dark Mode">
-                <span id="sun-icon">☀️</span>
-                <span id="moon-icon">🌙</span>
+            <button id="nav-mobile-toggle" class="md:hidden text-white z-50 relative">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
         </div>
     </nav>
 
-    <div class="mobile-toggle-btn" id="mobile-toggle-btn">></div>
-    <div class="sidebar">
-        <h2>Search & Filters</h2>
-        <input type="text" id="search-box" placeholder="Search content...">
-
-        <h3><a href="#git-content">Git</a><span class="toggle-arrow collapsed"></span></h3>
-        <ul>
-            <li data-value="gitConfig">Git Config </li>
-            <li data-value="viewGitConfig">Config Status</li>
-            <li data-value="gitWorkflow">Git Workflow</li>
-            <li data-value="gitInit">Git Init</li>
-            <li data-value="addGit">Git Add</li>
-            <li data-value="gitCommit">Git Commits</li>
-            <li data-value="githubConnect">Connect to GitHub</li>
-            <li data-value="gitPush">Git Push</li>
-            <li data-value="gitLog">Commit History</li>
-            <li data-value="gitCommitNav">Commit Navigation</li>
-            <li data-value="gitBranch">Branch Management</li>
-            <li data-value="gitMerge">Merge Code</li>
-            <li data-value="gitDiff">Diff Changes</li>
-            <li data-value="gitReset">Git Reset</li>
-            <li data-value="gitRevert">Git Revert</li>
-        </ul>
-
-        <h3>HTML <span class="toggle-arrow collapsed"></span></h3>
-        <ul>
-            <li></li>
-        </ul>
-
-        <h3>CSS <span class="toggle-arrow collapsed"></span></h3>
-        <ul>
-            <li></li>
-        </ul>
-
-        <h3>JavaScript <span class="toggle-arrow collapsed"></span></h3>
-        <ul>
-            <li></li>
-        </ul>
+    <!-- Mobile Nav Overlay -->
+    <div id="mobile-nav-menu" class="fixed inset-0 bg-black/95 z-40 flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-lg">
+        <a href="index.html" class="text-2xl font-bold text-[#38bdf8] transition-colors">Home</a>
+        <a href="github.html" class="text-2xl font-bold text-white hover:text-[#38bdf8] transition-colors">Git & GitHub</a>
+        <a href="c.html" class="text-2xl font-bold text-white hover:text-[#38bdf8] transition-colors">C / C++</a>
+        <a href="java.html" class="text-2xl font-bold text-white hover:text-[#38bdf8] transition-colors">Java</a>
     </div>
 
-    <div class="main-content">
-        <!-- HTML Content -->
-        <section id="git-content">
-            <h1>Git Content</h1>
 
-            <section id="gitConfig">
-                <h2 class="main-content-title">Git Configuration Settings</h2>
-                <h3>Set Your Global Username</h3>
-                <p>Configure your display name for all Git repositories on your system:</p>
-                <pre class="language-bash"><code>git config --global user.name "Your Name"</code></pre>
-                <h3>Set Your Global Email Address</h3>
-                <p>Configure your email address for all Git repositories on your system:</p>
-                <pre class="language-bash"><code>git config --global user.email "your_email@example.com"</code></pre>
-                <h3>Set a Repository-Specific Username</h3>
-                <p>Override the global username for a specific Git repository (run this command inside the repository):
-                </p>
-                <pre class="language-bash"><code>git config user.name "Your Name"</code></pre>
-                <h3>Set a Repository-Specific Email Address</h3>
-                <p>Override the global username for a specific Git repository (run this command inside the repository):
-                </p>
-                <pre class="language-bash"><code>git config user.email "your_email@example.com"</code></pre>
-            </section>
-
-            <section id="viewGitConfig">
-                <h2 class="main-content-title">View Git Configuration</h2>
-                <h3>View Global Username</h3>
-                <p>Check your globally configured Git username:</p>
-                <pre class="language-bash"><code>git config --global user.name</code></pre>
-                <h3>View Global Email</h3>
-                <p>Check your globally configured Git emial:</p>
-                <pre class="language-bash"><code>git config --global user.email</code></pre>
-                <h3>Check specific config repo name</h3>
-                <p>Check Configured user name add for specific repository</p>
-                <pre class="language-bash"><code>git config user.name</code></pre>
-                <h3>Check specific config repo email</h3>
-                <p>Check Configured user email add for specific repository</p>
-                <pre class="language-bash"><code>git config user.email</code></pre>
-            </section>
-
-            <section id="gitWorkflow">
-                <h2 class="main-content-title">Basic Git Workflow</h2>
-
-                <h3>Clone a Repository</h3>
-                <p>Create a local copy of a remote repository to start working:</p>
-                <pre class="language-bash"><code>git clone https://github.com/username/repo.git</code></pre>
-
-                <h3>Create a Feature Branch</h3>
-                <p>Start a new branch to isolate your changes from the main codebase:</p>
-                <pre class="language-bash"><code>git checkout -b feature-branch</code></pre>
-
-                <h3>Stage and Commit Changes</h3>
-                <p>Save your work to version history with a descriptive message:</p>
-                <pre class="language-bash"><code>git add .
-git commit -m "Implement user login functionality"</code></pre>
-
-                <h3>Push to Remote Repository</h3>
-                <p>Upload your local commits to share with team members:</p>
-                <pre class="language-bash"><code>git push origin feature-branch</code></pre>
-
-                <h3>Create Pull Request</h3>
-                <p>Propose merging your changes to the main branch (done through GitHub/GitLab UI)</p>
-
-                <h3>Review and Merge</h3>
-                <p>After approval, merge your pull request into the main branch (typically done in UI)</p>
-
-                <h3>Update Local Repository</h3>
-                <p>Synchronize your local main branch with the latest merged changes:</p>
-                <pre class="language-bash"><code>git checkout main
-git pull origin main</code></pre>
-
-            </section>
-
-            <section id="gitInit">
-                <h2 class="main-content-title">Initialize a Git Repository</h2>
-                <h3>Create a New Repository</h3>
-                <p>Initialize Git in the current directory to start version tracking:</p>
-                <pre class="language-bash"><code>git init</code></pre>
-            </section>
-
-            <section id="addGit">
-                <h2 class="main-content-title">Stage Files for Commit</h2>
-                <h3>Stage a Specific File</h3>
-                <p>Add a single file to Git's staging area:</p>
-                <pre class="language-bash"><code>git add fileName.extension</code></pre>
-                <h3>Stage All Changes</h3>
-                <p>Add all new and modified files to the staging area:</p>
-                <pre class="language-bash"><code>git add .</code></pre>
-            </section>
-
-            <section id="gitCommit">
-                <h2 class="main-content-title">Save Changes with Commit</h2>
-                <h3>Create a New Commit</h3>
-                <p>Permanently save your staged changes to version history with a descriptive message:</p>
-                <pre class="language-bash"><code>git commit -m "commit message here"</code></pre>
-            </section>
-
-            <section id="githubConnect">
-                <h2 class="main-content-title">Connect Local Project to GitHub</h2>
-                <h3>Link Existing Folder to New Repository</h3>
-                <p>Connect your local project folder to a new GitHub repository:</p>
-                <pre class="language-bash"><code>git remote add origin https://github.com/username/repo.git</code></pre>
-
-                <h3>Link Existing Folder to Existing Repository</h3>
-                <p>Connect your local folder to an already created GitHub repository:</p>
-                <pre class="language-bash"><code>git remote add origin https://github.com/username/repo.git
-git pull origin main</code></pre>
-            </section>
-
-            <section id="gitPush">
-                <h2 class="main-content-title">Upload Changes to Remote</h2>
-                <h3>Push to Main Branch</h3>
-                <p>Upload your committed changes to the main branch of the remote repository:</p>
-                <pre class="language-bash"><code>git push origin main</code></pre>
-
-                <h3>Push Specific Branch</h3>
-                <p>Upload changes from a different local branch to its remote counterpart:</p>
-                <pre class="language-bash"><code>git push origin branch_name</code></pre>
-
-                <h3>Force Push</h3>
-                <p>Overwrite remote history (use with caution):</p>
-                <pre class="language-bash"><code>git push --force origin main</code></pre>
-            </section>
-
-            <section id="gitLog">
-                <h2 class="main-content-title">View Commit History</h2>
-                <h3>Basic Commit Log</h3>
-                <p>Display the commit history in chronological order:</p>
-                <pre class="language-bash"><code>git log</code></pre>
-
-                <h3>Compact Log View</h3>
-                <p>Show simplified commit history (one line per commit):</p>
-                <pre class="language-bash"><code>git log --oneline</code></pre>
-
-                <h3>Graphical Branch History</h3>
-                <p>Visualize commit history with branch topology:</p>
-                <pre class="language-bash"><code>git log --graph --oneline --all</code></pre>
-
-                <h3>Filter by Author</h3>
-                <p>Show commits from a specific contributor:</p>
-                <pre class="language-bash"><code>git log --author="Name"</code></pre>
-
-                <h3>Search Commit Messages</h3>
-                <p>Find commits containing specific text:</p>
-                <pre class="language-bash"><code>git log --grep="search term"</code></pre>
-
-                <h3>Show Changes in Files</h3>
-                <p>View what changed in each commit:</p>
-                <pre class="language-bash"><code>git log -p</code></pre>
-            </section>
-
-            <section id="gitCommitNav">
-                <h2 class="main-content-title">Navigate Commit History</h2>
-                <h3>Checkout a Specific Commit</h3>
-                <p>Temporarily switch to a previous commit state (read-only):</p>
-                <pre class="language-bash"><code>git checkout a1b2c3d</code></pre>
-                <p class="note">Replace "a1b2c3d" with your actual commit hash</p>
-
-                <h3>Return to Latest Commit</h3>
-                <p>Switch back to the most recent commit in your branch:</p>
-                <pre class="language-bash"><code>git checkout main</code></pre>
-                <p class="note">Replace "main" with your branch name if different</p>
-
-                <h3>Force Checkout (Discard Changes)</h3>
-                <p>Overwrite all local changes and return to the latest commit (WARNING: Permanent data loss):</p>
-                <pre class="language-bash"><code>git checkout -f main</code></pre>
-                <p class="warning">⚠️ This will permanently erase all uncommitted changes and untracked files in your
-                    working directory</p>
-
-                <h3>Create Branch from Old Commit</h3>
-                <p>Start a new branch from a historical commit (safe for modifications):</p>
-                <pre class="language-bash"><code>git checkout -b new-branch-name a1b2c3d</code></pre>
-
-                <h3>Find Commit Hashes</h3>
-                <p>View abbreviated commit history with hashes:</p>
-                <pre class="language-bash"><code>git log --oneline</code></pre>
-
-            </section>
-
-            <section id="gitBranch">
-                <h2 class="main-content-title">Branch Operations</h2>
-
-                <h3>Create New Branch</h3>
-                <p>Start a new branch from your current commit:</p>
-                <pre class="language-bash"><code>git branch new-feature</code></pre>
-
-                <h3>Switch to Branch</h3>
-                <p>Move to an existing branch:</p>
-                <pre class="language-bash"><code>git checkout branch-name</code></pre>
-
-                <h3>Create + Switch Branch</h3>
-                <p>Combine branch creation and switching in one command:</p>
-                <pre class="language-bash"><code>git checkout -b hotfix-branch</code></pre>
-
-                <h3>List All Branches</h3>
-                <p>View local branches (* marks current branch):</p>
-                <pre class="language-bash"><code>git branch</code></pre>
-
-                <h3>Delete Branch</h3>
-                <p>Remove a merged branch (safe deletion):</p>
-                <pre class="language-bash"><code>git branch -d old-branch</code></pre>
-
-                <h3>Force Delete Branch</h3>
-                <p>Delete unmerged branch (potential data loss):</p>
-                <pre class="language-bash"><code>git branch -D unmerged-branch</code></pre>
-            </section>
-
-            <section id="gitMerge">
-                <h2 class="main-content-title">Merge Operations</h2>
-
-                <h3>Merge Branch</h3>
-                <p>Combine another branch into your current branch:</p>
-                <pre class="language-bash"><code>git merge feature-branch</code></pre>
-
-                <h3>Fast-Forward Merge</h3>
-                <p>Linear history merge (when possible):</p>
-                <pre class="language-bash"><code>git merge --ff-only main</code></pre>
-
-                <h3>No-Fast-Forward Merge</h3>
-                <p>Always create merge commit (even when unnecessary):</p>
-                <pre class="language-bash"><code>git merge --no-ff dev</code></pre>
-
-                <h3>Abort Merge</h3>
-                <p>Cancel a merge in progress with conflicts:</p>
-                <pre class="language-bash"><code>git merge --abort</code></pre>
-
-                <h3>View Merge Conflicts</h3>
-                <p>List files with merge conflicts:</p>
-                <pre class="language-bash"><code>git status</code></pre>
-            </section>
-
-            <section id="gitDiff">
-                <h2 class="main-content-title">Diff Operations</h2>
-
-                <h3>Unstaged Changes</h3>
-                <p>View changes in working directory that haven't been staged:</p>
-                <pre class="language-bash"><code>git diff</code></pre>
-
-                <h3>Staged Changes</h3>
-                <p>View changes that have been staged but not yet committed:</p>
-                <pre class="language-bash"><code>git diff --cached</code></pre>
-
-                <h3>All Changes (Staged + Unstaged)</h3>
-                <p>View both staged and unstaged changes together:</p>
-                <pre class="language-bash"><code>git diff HEAD</code></pre>
-
-                <h3>Compare Two Branches</h3>
-                <p>Show differences between two branches:</p>
-                <pre class="language-bash"><code>git diff main..dev</code></pre>
-
-                <h3>Compare Two Commits</h3>
-                <p>Show changes between two specific commits:</p>
-                <pre class="language-bash"><code>git diff commit1 commit2</code></pre>
-
-                <h3>Check Changes Since Last Commit</h3>
-                <p>See what changed since the last commit:</p>
-                <pre class="language-bash"><code>git diff HEAD</code></pre>
-
-            </section>
-
-            <section id="gitReset">
-                <h2 class="main-content-title">Git Reset Commands</h2>
-
-                <h3>1. Undo Last Commit (Keep Changes)</h3>
-                <p>Remove the most recent commit but keep all changes staged:</p>
-                <pre class="language-bash"><code>git reset --soft HEAD~1</code></pre>
-
-                <h3>2. Unstage All Files</h3>
-                <p>Remove all changes from staging area (keeps working directory intact):</p>
-                <pre class="language-bash"><code>git reset</code></pre>
-
-                <h3>3. Discard Local Changes (DANGER)</h3>
-                <p>Permanently erase all uncommitted changes and reset to last commit:</p>
-                <pre class="language-bash"><code>git reset --hard HEAD</code></pre>
-                <p class="warning">⚠️ Irreversible action - use with caution</p>
-
-                <h3>4. Reset to Specific Commit</h3>
-                <p>Move branch pointer to an older commit (keeps changes in working dir):</p>
-                <pre class="language-bash"><code>git reset a1b2c3d</code></pre>
-
-                <h3>5. Unstage Single File</h3>
-                <p>Remove one file from staging while keeping changes in working directory:</p>
-                <pre class="language-bash"><code>git reset HEAD file.txt</code></pre>
-            </section>
-
-            <section id="gitRevert">
-                <h2 class="main-content-title">Essential Git Revert Commands</h2>
-
-                <h3>1. Undo Last Commit</h3>
-                <p>Create a new commit that reverses the changes from the most recent commit:</p>
-                <pre class="language-bash"><code>git revert HEAD</code></pre>
-
-                <h3>2. Undo Specific Commit</h3>
-                <p>Reverse changes from any commit while keeping later commits intact:</p>
-                <pre class="language-bash"><code>git revert a1b2c3d</code></pre>
-
-                <h3>3. Undo Without Committing</h3>
-                <p>Stage the reversal changes but don't auto-commit (for manual adjustments):</p>
-                <pre class="language-bash"><code>git revert -n a1b2c3d</code></pre>
-
-                <h3>4. Undo Merge Commit</h3>
-                <p>Safely reverse a merge while preserving history:</p>
-                <pre class="language-bash"><code>git revert -m 1 merge_commit_hash</code></pre>
-
-                <h3>5. Undo Multiple Commits</h3>
-                <p>Reverse a range of commits (creates one revert per commit):</p>
-                <pre class="language-bash"><code>git revert oldest_hash..newest_hash</code></pre>
-            </section>
-
-
-        </section>
-
-        <!-- CSS Content -->
-        <section id="css-content" hidden>
-            <h1>CSS Content</h1>
-            <section id="flexbox">
-                <h2>Flexbox</h2>
-                <p>Flexbox layout examples...</p>
-            </section>
-            <section id="grid">
-                <h2>CSS Grid</h2>
-                <p>Grid layout system...</p>
-            </section>
-        </section>
-
-        <!-- JavaScript Content -->
-        <section id="js-content" hidden>
-            <h1>JavaScript Content</h1>
-            <section id="functions">
-                <h2>Functions</h2>
-                <p>Function declarations and expressions...</p>
-            </section>
-            <section id="events">
-                <h2>Events</h2>
-                <p>Event listeners and handlers...</p>
-            </section>
-        </section>
+    <!-- Hero Section / Motive -->
+    <div class="pt-32 pb-20 px-6 max-w-4xl mx-auto text-center" data-aos="fade-up">
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+            The Ultimate <br>
+            <span class="text-gradient">Code Library</span> for Developers
+        </h1>
+        <p class="text-lg md:text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+            A comprehensive, masterfully curated hub for all coding syntax. From Version Control formulas to low-level C programming, keep every vital script at your fingertips.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#directories" class="bg-white text-black px-8 py-3 rounded-md font-semibold hover:bg-slate-200 transition-colors w-full sm:w-auto">Explore Library</a>
+            <a href="github.html" class="border border-white/20 px-8 py-3 rounded-md font-semibold hover:bg-white/5 transition-colors w-full sm:w-auto">Start with Git</a>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- The "Why" / Motive Expanded Content -->
+    <div class="max-w-4xl mx-auto px-6 mb-24 cursor-default" data-aos="fade-up" data-aos-delay="50">
+        <div class="prose prose-invert prose-lg text-slate-300 text-center">
+            <p class="mb-6">
+                <strong>Why Codesheet?</strong> I started this project because I was tired of digging through 50-page wiki docs and SEO-bloated stackoverflow threads just to find a single, 12-character command that I forgot.
+            </p>
+            <p>
+                The goal is to eventually encompass <span class="text-white">20+ distinct languages and architectures</span> in one rapidly searchable, incredibly clean interface. You don't need a tutorial. You just need the code.
+            </p>
+        </div>
+    </div>
+
+    <!-- Info Cards -->
+    <div class="max-w-5xl mx-auto px-6 mb-24 cursor-default" data-aos="fade-up" data-aos-delay="100">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div class="bg-[#111111] border border-white/5 rounded-xl p-6 hover:border-accent transition-colors">
+                <div class="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-2">Platform Goal</div>
+                <div class="text-xl font-semibold">Zero Documentation Digging</div>
+                <p class="text-sm text-slate-400 mt-2">Stop switching to Google. Get the pure syntax exactly when you need it.</p>
+            </div>
+
+            <div class="bg-[#111111] border border-white/5 rounded-xl p-6 hover:border-accent-blue transition-colors">
+                <div class="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-2">Library Stack</div>
+                <div class="text-xl font-semibold">Multiple Architectures</div>
+                <p class="text-sm text-slate-400 mt-2">Currently covering Git infrastructures, with robust C and Java modules in deployment.</p>
+            </div>
+            
+            <div class="bg-[#111111] border border-white/5 rounded-xl p-6 md:col-span-2 flex flex-col md:flex-row items-start md:items-center justify-between group hover:border-white/20 transition-colors">
+                 <div>
+                    <div class="text-[10px] font-mono text-accent uppercase tracking-widest mb-2">System Status</div>
+                    <div class="text-xl font-semibold text-white group-hover:text-accent transition-colors">All Directories Operational</div>
+                 </div>
+                 <div class="mt-4 md:mt-0 font-mono text-sm text-slate-400">
+                    V 3.0.0
+                 </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Directories / Agenda view -->
+    <div id="directories" class="max-w-3xl mx-auto px-6 mb-32" data-aos="fade-up" data-aos-delay="200">
+        <div class="border border-white/5 rounded-2xl bg-[#0a0a0a] overflow-hidden hover:shadow-[0_0_50px_rgba(16,185,129,0.05)] transition-shadow">
+            <div class="px-8 py-6 border-b border-white/5 bg-[#111111]">
+                <h3 class="text-sm font-mono text-accent font-bold tracking-widest">MODULE DIRECTORY</h3>
+            </div>
+            
+            <div class="divide-y divide-white/5">
+                <!-- Directory Item 1 -->
+                <a href="github.html" class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-8 hover:bg-white/[0.02] transition-colors group">
+                    <div class="flex items-center gap-6">
+                        <span class="font-mono text-accent font-bold text-lg">01</span>
+                        <div>
+                            <h4 class="text-lg font-semibold group-hover:text-accent transition-colors">Git & GitHub Core</h4>
+                            <p class="text-sm text-slate-500 mt-1">Version Control for Coders</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Directory Item 2 -->
+                <a href="c.html" class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-8 hover:bg-white/[0.02] transition-colors group">
+                    <div class="flex items-center gap-6">
+                        <span class="font-mono text-slate-600 font-bold text-lg">02</span>
+                        <div>
+                            <h4 class="text-lg font-semibold text-slate-300 group-hover:text-white transition-colors">The C Architecture</h4>
+                            <p class="text-sm text-slate-500 mt-1">Memory, Pointers (TBD)</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Directory Item 3 -->
+                <a href="java.html" class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-8 hover:bg-white/[0.02] transition-colors group">
+                    <div class="flex items-center gap-6">
+                        <span class="font-mono text-slate-600 font-bold text-lg">03</span>
+                        <div>
+                            <h4 class="text-lg font-semibold text-slate-300 group-hover:text-white transition-colors">Java Fundamentals</h4>
+                            <p class="text-sm text-slate-500 mt-1">OOP, JVM mechanics (TBD)</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comprehensive Footer -->
+    <footer class="border-t border-white/5 bg-[#050505] pt-16 pb-8">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12">
+            <div>
+                <a href="index.html" class="text-xl font-bold tracking-wider flex items-center gap-2 mb-4">
+                    <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    CODESHEET
+                </a>
+                <p class="text-slate-500 text-sm max-w-sm">
+                    A centralized, continuously expanding library of syntax and commands tailored for modern software engineers.
+                </p>
+            </div>
+            
+            <div class="flex flex-col gap-3">
+                <h4 class="text-white font-semibold mb-2">Legal</h4>
+                <a href="terms.html" class="text-sm text-slate-500 hover:text-white transition-colors">Terms and Conditions</a>
+                <a href="privacy.html" class="text-sm text-slate-500 hover:text-white transition-colors">Privacy Policy</a>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <h4 class="text-white font-semibold mb-2">Connect</h4>
+                <div class="flex items-center gap-4 text-slate-500">
+                    <a href="mailto:ahnaftajwarsuchak@gmail.com" class="hover:text-accent transition-colors" title="Email me">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </a>
+                    <a href="https://github.com/atsuchak" target="_blank" class="hover:text-accent transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/atsuchak" target="_blank" class="hover:text-accent transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"></path></svg>
+                    </a>
+                    <a href="https://facebook.com/atsuchak" target="_blank" class="hover:text-accent transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-6 border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-slate-600">Created by <span class="text-white font-medium">Ahnaf Tajwar Suchak</span></p>
+            <p class="text-sm text-slate-600">&copy; 2026 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/global.js"></script>
 </body>
-
 </html>
